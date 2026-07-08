@@ -4,7 +4,7 @@ function loadFooter() {
 
     // 1. محاولة استرجاع الفوتر من الكاش (عرض فوري)
     const cachedFooter = localStorage.getItem('cachedFooterHTML');
-    let savedLang = localStorage.getItem("selectedLang") || "en";
+    let savedLang = localStorage.getItem("selectedLang") || "ar";
 
     if (cachedFooter) {
         placeholder.innerHTML = cachedFooter;
