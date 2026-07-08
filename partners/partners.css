@@ -1,0 +1,1187 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+:root {
+    --primary: #4F46E5;
+    --soft-bg: #fdfdfd;
+    --text-main: #1a1a1a;
+    --glass-border: rgba(0, 0, 0, 0.05);
+}
+
+body.var-partners-page {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--soft-bg);
+    color: var(--text-main);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Background Luxury Elements */
+.luxury-bg-elements {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+.hero-span{
+    color: #4F46E5 !important;
+}
+
+.circle-blur {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 80px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Luxury Card */
+.hero-card {
+    background: white;
+    padding: 70px 60px;
+    border-radius: 40px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+
+
+/* Main Title */
+.contact-main-title {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .contact-main-title {
+        font-size: 38px;
+    }
+}
+
+/* Subtitle */
+.hero-subtitle {
+    font-size: 18px;
+    color: #475569;
+    max-width: 680px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+
+/* Buttons */
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #111;
+    color: white;
+}
+
+.btn-primary:hover {
+    /* background: var(--primary); */
+    transform: translateY(-4px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #111;
+    border: 2px solid #111;
+}
+
+.btn-secondary:hover {
+    /* background: #111;
+    color: white; */
+    transform: translateY(-4px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .hero-card {
+        padding: 50px 30px;
+    }
+}
+
+/* ====================== STATS SECTION ====================== */
+.stats-section {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 42px 20px;
+}
+
+.stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-item-luxury {
+    position: relative;
+}
+
+.stat-item-luxury::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 1px;
+    height: 60px;
+    background: #e5e7eb;
+    transform: translateY(-50%);
+}
+
+.stat-item-luxury:first-child::after {
+    display: none;
+}
+ .stat-text-number{
+     font-size: 30px;
+    font-weight: 700;
+    color: #4F46E5;
+    line-height: 1;
+    margin-bottom: 8px;
+ }
+.stat-number {
+    font-size: 37px;
+    font-weight: 700;
+    color: #4F46E5;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-text {
+    font-size: 15.5px;
+    color: #475569;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+    
+    .stat-item-luxury::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====================== WHY SECTION (Luxury Cards) ====================== */
+.why-section {
+    padding: 80px 0 120px;
+    background: #ffffff;
+}
+
+.why-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flex-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.luxury-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 340px;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+}
+
+.luxury-card:hover {
+    transform: translateY(-12px);
+    border-color: #4F46E5;
+    box-shadow: 0 25px 50px rgba(79, 70, 229, 0.1);
+}
+
+.card-inner-box {
+    padding: 42px 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.title-h3 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.desc-p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #555;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Hover Line Effect */
+.luxury-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #4F46E5;
+    transition: width 0.4s ease;
+}
+
+.luxury-card:hover::after {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .luxury-card {
+        min-width: 45%;
+    }
+}
+
+@media (max-width: 640px) {
+    .luxury-card {
+        min-width: 100%;
+    }
+}
+/* ====================== SECTION HEADER (موحد) ====================== */
+/* .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.ultra-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4338ca;
+    background: rgba(79, 70, 229, 0.1);
+    padding: 10px 26px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: clamp(34px, 5.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.section-subtitle {
+    font-size: 18.5px;
+    color: #475569;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.8;
+} */
+/* ====================== TIERS SECTION ====================== */
+.tiers-section {
+    padding: 100px 20px;
+    background: white;
+}
+
+.tiers-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.tier-card-luxury {
+    background: white;
+    padding: 48px 36px;
+    border-radius: 32px;
+    border: 1px solid #f1f1f1;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.tier-card-luxury:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(79, 70, 229, 0.12);
+}
+
+.tier-card-luxury.featured {
+    border: 2px solid #4F46E5;
+    padding-top: 58px;
+}
+
+.featured-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4F46E5;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.tier-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tier-card-luxury h3 {
+    font-size: 26px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.tier-desc {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 32px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.tier-features {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.tier-features li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: #374151;
+}
+
+.check {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.w-full {
+    width: 100%;
+}
+/* ====================== TIERS ICONS ====================== */
+.tier-icon-wrapper {
+    font-size: 68px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: #64748b;
+    transition: all 0.4s ease;
+}
+
+.tier-card-luxury:hover .tier-icon-wrapper {
+    color: #4F46E5;
+    transform: scale(1.08);
+}
+
+.tier-icon-wrapper.gold {
+    color: #eab308;
+}
+
+.tier-icon-wrapper.platinum {
+    color: #8b5cf6;
+}
+
+.tier-card-luxury.featured .tier-icon-wrapper {
+    color: #4F46E5;
+}
+/* ====================== SECTION HEADER ====================== */
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.ultra-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #424242;
+    /* color: #5856D6; */
+    background: rgba(79, 70, 229, 0.06);
+    padding: 6px 16px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: clamp(34px, 5.5vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.section-subtitle {
+    font-size: 18.5px;
+    color: #475569;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.tier-card-luxury {
+    background: white;
+    padding: 40px 32px;
+    border-radius: 24px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.tier-card-luxury:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+}
+
+.tier-card-luxury.featured {
+    border: 2px solid #4F46E5;
+    padding-top: 52px;
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
+}
+
+.featured-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4F46E5;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 24px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.tier-icon-wrapper {
+    font-size: 62px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.tier-card-luxury:hover .tier-icon-wrapper {
+    transform: scale(1.1);
+}
+
+.platinum { color: #7c3aed; }
+.gold { color: #eab308; }
+/* ====================== PARTNERS DIRECTORY SECTION ====================== */
+.partners-section {
+    padding: 100px 20px;
+    background: #fdfdfd;
+}
+
+.partners-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.header-text-side {
+    text-align: right;
+}
+
+/* Tabs Filter Luxury */
+.filter-tabs {
+    display: flex;
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 100px;
+    gap: 4px;
+}
+
+.filter-tab {
+    background: transparent;
+    border: none;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.filter-tab.active, .filter-tab:hover {
+    background: #ffffff;
+    color: #111111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Main Grid */
+.partners-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+/* Luxury Card Core Structure */
+.partner-card-luxury {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 36px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.partner-card-luxury:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.04);
+    border-color: #4F46E5;
+}
+
+/* Card Components */
+.partner-top-box {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.partner-logo-preview {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+/* Soft Premium Colors for Logos */
+.bg-gold-subtle { background: #eef0ff; color: #4f46e5; }
+.bg-silver-subtle { background: #e6faf5; color: #0f6e56; }
+.bg-amber-subtle { background: #fef3c7; color: #92400e; }
+
+.partner-meta-info h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #111111;
+}
+
+.partner-location-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    color: #64748b;
+}
+
+.partner-location-tag stroke {
+    color: #64748b;
+}
+
+/* Badges */
+/* .partner-tier-badge {
+    position: absolute;
+    top: 40px;
+    left: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 100px;
+}
+
+.gold-badge { background: rgba(234, 179, 8, 0.08); color: #a16207; }
+.silver-badge { background: rgba(148, 163, 184, 0.1); color: #475569; } */
+
+.partner-card-luxury {
+    position: relative;
+    padding-top: 48px; 
+}
+
+.partner-tier-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+    z-index: 10;
+}
+
+.gold-badge { 
+    background: #FFFDF0; 
+    color: #a16207; 
+    border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.silver-badge { 
+    background: #F8FAFC; 
+    color: #475569; 
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.partner-description-text {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+/* Tags Cloud */
+.partner-tags-wrapper {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.partner-single-tag {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+}
+
+/* Footer & Buttons */
+.partner-action-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+.partner-email-link {
+    font-size: 13.5px;
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.partner-email-link:hover {
+    color: #4F46E5;
+}
+
+.partner-connect-btn {
+    background: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 100px;
+   transition: all 0.3s ease;
+}
+
+.partner-connect-btn:hover {
+    /* background: #4F46E5; */
+     transform: translatey(-4px);
+
+}
+
+/* ====================== THE CTA DASHED CARD ====================== */
+.partner-card-luxury.cta-dashed-card {
+    border: 2px dashed #4F46E5;
+    background: rgba(79, 70, 229, 0.02);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+}
+
+.cta-icon-globe {
+    background: rgba(79, 70, 229, 0.08);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cta-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #4F46E5;
+    margin: 0 0 10px 0;
+}
+
+.cta-description {
+    font-size: 13.5px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    max-width: 260px;
+}
+
+/* Animation */
+.animate-pulse {
+    animation: luxuryPulse 3s infinite ease-in-out;
+}
+
+@keyframes luxuryPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+@media (max-width: 768px) {
+    .partners-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-tabs {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .filter-tab {
+        flex-grow: 1;
+        text-align: center;
+    }
+}
+
+/* ======================== FIXED SPLIT-GRID APPLY SECTION ======================== */
+.apply-section {
+    padding: 90px 0;
+    background-color: #f8fafc; 
+    direction: rtl;
+}
+
+
+.apply-wrapper {
+    display: grid;
+    grid-template-columns: .7fr 1fr; 
+    gap: 30px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.apply-info-side {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.apply-info-side .section-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 12px 0 16px 0;
+}
+
+.apply-info-side .section-desc {
+    font-size: 14.5px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+
+/* ستايل قائمة الخطوات بخط أصغر ونقاط زرقاء جانبية */
+.apply-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.apply-steps li {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+}
+
+.apply-steps .step-num {
+    background: #4F46E5; /* اللون الأزرق الخاص بكِ */
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.step-text h4 {
+    font-size: 15px; /* حجم أصغر متناسق */
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 4px 0;
+}
+
+.step-text p {
+    font-size: 13px; /* خط الشرح أصغر وأخف */
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* الجانب الأيسر: ستايل مستطيل الفورم (Card) المتناسق مع تواصل معنا */
+.apply-form-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    text-align: right;
+}
+
+.form-card-header {
+    margin-bottom: 28px;
+}
+
+.form-card-header h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+}
+
+.form-card-header p {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* تقسيم المدخلات */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #344054;
+}
+
+.form-group label .req {
+    color: #f43f5e;
+    margin-left: 2px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #101828;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* زر الارسال الدائري الفاخر */
+.form-submit-btn {
+    background: #101010;
+    color: #ffffff;
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 100px; /* ستايل دائري أنيق */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.form-submit-btn:hover {
+    /* background: #3b33c7; */
+    transform: translateY(-4px);
+}
+
+.form-card-note {
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 14px;
+}
+
+/* رسالة النجاح الداخلية */
+.success-box-inside {
+    text-align: center;
+    padding: 40px 10px;
+}
+
+.success-box-inside .success-icon {
+    font-size: 44px;
+    margin-bottom: 16px;
+}
+
+.success-box-inside h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+}
+
+.success-box-inside p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 992px) {
+    .apply-wrapper {
+        grid-template-columns: 1fr; /* قلب التصميم لعمود واحد في الشاشات الصغيرة */
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .apply-form-card {
+        padding: 24px;
+    }
+}
+
+
+
+/* ======================== FAQ SECTION STYLES ======================== */
+.faq-section {
+ background: white;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 42px 20px;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-header .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 12px;
+}
+
+/* توزيع الأسئلة في شبكة من عمودين على الشاشات الكبيرة */
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* الكارد الخاص بكل سؤال */
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #d0d5dd;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* كتلة السؤال */
+.faq-q {
+    padding: 20px 24px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.faq-q:hover {
+    background: #f8fafc;
+}
+
+/* سهم المؤشر وحركته عند الفتح */
+.faq-q .arrow {
+    font-size: 14px;
+    color: #64748b;
+    transition: transform 0.3s ease;
+}
+
+.faq-q.open {
+    color: #4F46E5; /* يتغير للون الأزرق المعتمد عند الفتح */
+    background: #f8fafc;
+}
+
+.faq-q.open .arrow {
+    transform: rotate(180deg);
+    color: #4F46E5;
+}
+
+/* كتلة الإجابة مع الـ Animation */
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff;
+}
+
+.faq-a p {
+    padding: 0 24px 20px 24px;
+    margin: 0;
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* الفتح الفعلي عند إضافة الـ Class بواسطة الـ JS */
+.faq-a.open {
+    max-height: 200px; /* يعطي مساحة كافية للنص للظهور بسلاسة */
+}
+
+/* التجاوب مع الشاشات الصغيرة لجعل الأسئلة تحت بعضها */
+@media (max-width: 868px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .faq-header .section-title {
+        font-size: 26px;
+    }
+}
+

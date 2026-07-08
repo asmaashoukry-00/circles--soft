@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+:root {
+    --primary-blue: #5856D6;
+    --pure-white: #ffffff;
+    --soft-black: #1a1a1a;
+    --border-thin: #eeeeee;
+}
+
+/* hero */
+.saas-hero { 
+    padding-top: 120px; 
+    padding-bottom: 10px; 
+    text-align: center; 
+}
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.highlighted-word {
+    position: relative;
+    padding: 5px 10px; 
+    display: inline-block;
+}
+
+.custom-underline {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; transform: scale(1.15);
+}
+
+.hero-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+/* Hero CTA Button */
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    margin-top: 20px;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta:active {
+    transform: translateY(-1px);
+}
+
+.hero-cta i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.hero-cta:hover i {
+    transform: translateX(3px);
+}
+
+
+.dot-grid {
+    position: absolute;
+    right: 5%;
+    top: 20%;
+    width: 100px;
+    height: 200px;
+    background-image: radial-gradient(#d1d1d1 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.6;
+}
+
+html[dir="ltr"] .dot-grid {
+    right: auto;
+    left: 5%;
+}
+/*  */
+
+
+
+/* ----- */
+.creative-about {
+    background-color: var(--pure-white);
+    padding: 120px 0 0px 0;
+    font-family: 'Tajawal', sans-serif;
+    color: var(--soft-black);
+}
+
+.about-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 40px;
+    
+}
+
+/* الرؤية والرسالة - تداخل */
+.vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+.section-label {
+    font-size: 24px;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.main-para {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.blue-connector {
+    width: 150px;
+    margin-top: 20px;
+}
+
+/* تداخل الصور والكتل */
+.image-layering {
+    position: relative;
+}
+
+.main-img-box {
+    width: 100%;
+    height: 500px;
+    background: #f5f5f5;
+    border-radius: 8px; 
+    overflow: hidden;
+}
+
+.pixel-perfect-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* filter: grayscale(100%); */
+    transition: 0.6s;
+
+}
+
+.pixel-perfect-img:hover {
+    filter: grayscale(0%);
+}
+
+.floating-text-box {
+    position: absolute;
+    bottom: -60px;
+    left: -10px;
+    background: var(--soft-black);
+    color: white;
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 20px 20px 0px rgba(0, 85, 255, 0.1);
+}
+.floating-text-box h3{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: right;
+}
+.floating-text-box p{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: right;
+}
+html[dir="ltr"] .floating-text-box h3 ,html[dir=ltr] .floating-text-box p{
+text-align: left;
+}
+/*  responsive */
+@media (max-width: 1024px) {
+    .about-container {
+        padding: 0 30px;
+    }
+    .vision-grid {
+        gap: 50px;
+        margin-bottom: 100px;
+    }
+    .main-para {
+        font-size: 24px;
+    }
+    .floating-text-box {
+        left: -30px;
+        width: 280px;
+        padding: 30px;
+    }
+}
+
+/* LTR overrides for 1024px breakpoint */
+html[dir="ltr"] .floating-text-box {
+    left: auto;
+}
+@media (max-width: 1024px) {
+    html[dir="ltr"] .floating-text-box {
+        right: -30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-only-br{
+        display: none;
+    }
+    .hero-title {
+    font-size: 26px;
+    font-weight: 700;
+   
+}
+.section-label{
+    font-size: 18px;
+}
+    .creative-about {
+        padding: 60px 0;
+    }
+    .vision-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+    .text-block {
+        order: 1;
+    }
+    .image-layering {
+        order: 2;
+        margin-top: 20px;
+    }
+    .blue-connector {
+        margin: 20px auto;
+        display: block;
+    }
+    .main-img-box {
+        height: 350px;
+    }
+    .floating-text-box {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 90%;
+        margin: -50px auto 0;
+        box-shadow: 10px 10px 0px rgba(0, 85, 255, 0.1);
+        text-align: right;
+    }
+
+    /* LTR override inside 768px media query */
+    html[dir="ltr"] .floating-text-box {
+        left: auto;
+        right: 0;
+        text-align: left;
+    }
+
+    .main-para {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .desktop-only-br{
+        display: none;
+    }
+ .hero-title {
+    font-size: 26px;
+    font-weight: 700;
+   
+}
+    .text-block h1 {
+        margin-top: 20px;
+    }
+    .main-img-box {
+        height: 250px;
+    }
+    .main-para {
+        font-size: 20px;
+    }
+    .section-label {
+        font-size: 16px;
+    }
+    .floating-text-box {
+        width: 100%;
+        padding: 20px;
+    }
+}
+/* why circles section */
+.circles-luxury-grid {
+    padding: 60px 0 100px;
+    background-color: #ffffff;
+    direction: rtl;
+}
+
+html[dir="ltr"] .circles-luxury-grid {
+    direction: ltr;
+}
+
+html[dir="ltr"] .dot-indicator {
+    right: auto;
+    left: 0;
+}
+
+html[dir="ltr"] .solution-item {
+    padding-right: 0;
+    padding-left: 25px;
+}
+
+html[dir="ltr"] .section-title::before {
+    right: auto;
+    left: 0;
+}
+
+html[dir="ltr"] .floating-text-box {
+    left: auto;
+    right: -10px;
+}
+
+@media (max-width: 768px) {
+    .floating-text-box {
+        text-align: left;
+    }
+    html[dir="ltr"] .floating-text-box {
+        left: 0;
+        right: 0;
+        text-align: left;
+    }
+}
+
+/* عكس اتجاه الأسهم في وضع LTR */
+.icon-flip {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+html[dir="ltr"] .icon-flip {
+    transform: scaleX(-1);
+}
+
+.container-wide {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.main-header-zone {
+    text-align: center;
+    margin-bottom: 60px;
+   
+}
+
+.flex-cards-row{
+     padding: 0 100px;
+}
+
+.modern-bullets {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.ultra-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 10px; /* مسافة بسيطة للسهم */
+}
+
+/* Arabic: clean regular-weight section titles */
+html[dir="rtl"] .ultra-title {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* English: bold + slightly larger section titles */
+html[dir="ltr"] .ultra-title {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+/* تنسيق السهم الزرق المقطع */
+.header-visual-divider {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.blue-connector-small {
+    width: 130px; /* تحكمي في طول السهم من هنا */
+    height: auto;
+}
+
+.marketing-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.bullet-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #555;
+    font-size: 16px;
+}
+
+.bullet-item span {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+}
+
+/* نظام الكاردات جنب بعض */
+.flex-cards-row {
+    display: flex;
+    flex-wrap: nowrap; /* يضمن بقاءهم جنب بعض في الشاشات الكبيرة */
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.luxury-card {
+    flex: 1; /* توزيع متساوي للمساحة */
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+.card-inner-box {
+    padding: 45px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* محاذاة لليمين */
+}
+
+/* الأيقونات - واضحة جداً */
+.icon-header {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 30px;
+}
+
+.icon-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.title-h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 15px;
+}
+
+.desc-p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+    text-align: right;
+}
+html[dir="ltr"] .desc-p{
+    text-align: left;
+}
+
+/* الهوفر الإحترافي - تغيير إطار الكارد وبروزه */
+.luxury-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 20px 40px rgba(0, 85, 255, 0.06);
+}
+
+/* خط تزييني يظهر عند الهوفر أسفل الكارد */
+.luxury-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-blue);
+    transition: width 0.4s ease;
+}
+
+.luxury-card:hover::after {
+    width: 100%;
+}
+
+/* الاستجابة للموبايل - يتحول لعمودي فقط في الشاشات الصغيرة */
+@media (max-width: 1024px) {
+    .flex-cards-row {
+        flex-wrap: wrap;
+    }
+    .luxury-card {
+        flex: 0 0 calc(50% - 10px); /* كاردين في كل صف */
+    }
+}
+
+@media (max-width: 600px) {
+    .flex-cards-row{
+        padding: 10px;
+    }
+    .luxury-card {
+        flex: 0 0 100%; /* كارد واحد في الصف */
+    }
+    .modern-bullets {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+

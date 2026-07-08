@@ -1,0 +1,454 @@
+/* ========================================
+   GLOBAL ACCOUNTING PAGE - CUSTOM CSS (NO BOOTSTRAP)
+   ======================================== */
+
+/* --- CSS Variables --- */
+:root {
+   --primary-blue: #1E40AF;
+   --dark-blue: #1E3A8A;
+   --light-blue: #3B82F6;
+   --deep-black: #121212;
+   --soft-white: #fcfcfc;
+   --text-dark: #1a1a1a;
+   --text-gray: #666666;
+   --text-light: #ffffff;
+   --bg-light: #f9f9f9;
+   --border-color: #eeeeee;
+   --transition-fast: 0.3s ease;
+   --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset & Base --- */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--soft-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Internal content - use Cairo font */
+.service-content,
+.service-content h2,
+.service-content p,
+.service-features li,
+.service-number,
+.nav-logo,
+.nav-links a,
+.nav-btn {
+    font-family: 'Cairo', sans-serif;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+   display: block;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+   transition: var(--transition-fast);
+}
+
+ul {
+   list-style: none;
+}
+
+/* --- Container --- */
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+   .hero-features-inline {
+        max-width: 850px; 
+        margin: 20px auto;
+        line-height: 1.8; 
+        color: #475569; 
+        font-size: 0.88rem;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .divider {
+        color: #cbd5e1; 
+        margin: 0 8px; 
+        font-weight: 300;
+    }
+
+   
+    .hero-features-inline:hover {
+        color: #1e293b; 
+        transition: color 0.3s ease;
+    }
+.hero-creative-layered {
+  position: relative;
+  min-height: 65vh; 
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+
+.floating-elements .element {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.4; 
+  /* filter: grayscale(100%);  */
+  transition: all 0.6s ease;
+  pointer-events: none; 
+}
+
+
+.el-1 { width: 300px; top: -50px; right: -50px; transform: rotate(-10deg); }
+.el-2 { width: 250px; bottom: -20px; left: -100px; transform: rotate(15deg); }
+.el-3 { width: 200px; top: 100px; left: 0px; transform: rotate(-5deg); opacity: 0.1 !important; }
+
+
+.hero-creative-layered:hover .element {
+  opacity: 0.5;
+  transform: scale(1.05) rotate(0deg);
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  padding-top: 40px;
+}
+
+.gradient-text {
+  color: #606060;
+  font-weight: 600;
+
+  /* إلغاء خواص التدرج القديمة تماماً ليعمل اللون العادي */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 45px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 50px; 
+  text-decoration: none;
+  font-weight: 600;
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.1); */
+  transition: 0.3s;
+}
+
+.btn:hover {
+ 
+  transform: translateY(-3px);
+}
+/* ========================================
+   SERVICES SECTION
+   ======================================== */
+.services-section {
+   padding: 70px 0;
+}
+
+.service-row {
+   display: grid;
+  grid-template-columns: .9fr 1fr ;
+   gap: 60px;
+   align-items: center;
+   margin-bottom: 100px;
+}
+
+.service-row:last-child {
+   margin-bottom: 0;
+}
+
+.service-row.reverse {
+   direction: ltr;
+   grid-template-columns: .9fr 1.1fr  ;
+}
+
+.service-row .service-content {
+   direction: rtl;
+}
+
+.service-row.reverse .service-content {
+   direction: rtl;
+   text-align: right;
+}
+.service-image {
+  max-width: 660px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+
+.service-content {
+   position: relative;
+   padding: 20px;
+}
+
+.service-number {
+   font-size: 6rem;
+   font-weight: 900;
+   color: rgba(30, 64, 175, 0.08);
+   position: absolute;
+   top: -20px;
+   right: 10px;
+   line-height: 1;
+}
+
+.service-content h2 {
+   font-size: 2.2rem;
+   font-weight: 800;
+   margin-bottom: 25px;
+   color: var(--text-dark);
+   border-right: 5px solid var(--primary-blue);
+   padding-right: 20px;
+   
+}
+
+/* .service-row.reverse .service-content h2 {
+   border-right: none;
+   border-left: 5px solid var(--primary-blue);
+   padding-right: 20px;
+   padding-right: 0;
+} */
+
+.service-content p {
+   font-size: 1.15rem;
+   color: var(--text-gray);
+   line-height: 1.8;
+   margin-bottom: 25px;
+   text-align: right;
+}
+
+.service-features {
+   padding: 0;
+   margin: 0;
+}
+
+.service-features li {
+   display: flex;
+   align-items: flex-start;
+   gap: 12px;
+   margin-bottom: 15px;
+   font-weight: 600;
+   color: #333;
+   font-size: 1.05rem;
+}
+
+.service-features li i {
+   color: var(--primary-blue);
+   font-size: 0.9rem;
+   margin-top: 5px;
+   margin-left: 8px;
+}
+
+.service-row .service-features li {
+   flex-direction: row;
+   text-align: right;
+}
+
+@media (max-width: 991px) {
+   .service-row,
+   .service-row.reverse {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+      direction: rtl;
+   }
+
+   .service-row .service-content {
+      direction: rtl;
+      order: -1;
+   }
+
+   .service-content h2 {
+      border-right: none;
+      border-bottom: 4px solid var(--primary-blue);
+      display: inline-block;
+      padding-bottom: 10px;
+      padding-right: 0;
+      padding-left: 0;
+     
+   }
+
+   /* .service-row .service-content h2 {
+      border-left: none;
+      border-bottom: 4px solid var(--primary-blue);
+   } */
+
+   .service-image img {
+      height: 200px;
+      border-radius: 20px 0 20px 0;
+   }
+}
+
+@media (max-width: 768px) {
+   .service-image img {
+      height: 245px;
+   }
+
+   .service-number {
+      font-size: 4.5rem;
+   }
+
+   .service-content h2 {
+      font-size: 1.8rem;
+   }
+}
+/* ======================================================================
+   PERFECT ENGLISH LTR FIX (USING FLEX/GRID ORDER SYSTEM)
+   ====================================================================== */
+html[dir="ltr"] .service-row .service-features li {
+    flex-direction: row;
+    text-align: left;
+}
+html[dir="ltr"] .service-row p  {
+    flex-direction: row;
+    text-align: left !important;
+}
+html[lang="en"] .service-row {
+    direction: ltr !important; /* Force standard layout direction */
+    grid-template-columns: 1fr 1fr !important; /* Balanced layout for English text */
+    gap: 60px;
+}
+
+html[lang="en"] .service-row .service-content {
+    direction: ltr !important;
+    text-align: left !important;
+    order: 1 !important; /* Text comes first */
+}
+
+html[lang="en"] .service-row .service-image {
+    order: 2 !important; /* Image comes second */
+}
+
+/* --- Reverse Row Fix for English --- */
+html[lang="en"] .service-row.reverse {
+    grid-template-columns: 1fr 1fr !important;
+}
+
+html[lang="en"] .service-row.reverse .service-content {
+    order: 2 !important; /* Text moves to the right side */
+    text-align: left !important;
+}
+
+html[lang="en"] .service-row.reverse .service-image {
+    order: 1 !important; /* Image moves to the left side */
+}
+
+/* --- English Title Underline Accent --- */
+html[lang="en"] .service-content h2 {
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 4px solid var(--primary-blue) !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-bottom: 10px !important;
+    text-align: left !important;
+    display: inline-block !important; /* Fits perfectly to text width */
+}
+
+/* --- English Icons Spacing Reset --- */
+html[lang="en"] .service-features li i {
+    margin-left: 0 !important;
+    margin-right: 8px !important;
+}
+
+html[lang="en"] .service-number {
+   font-size: 6rem;
+   font-weight: 900;
+   color: rgba(30, 64, 175, 0.08);
+   position: absolute;
+   top: -13px;
+   left: 1px;
+   line-height: 1;
+}
+
+/* --- English Layout Protection on Mobile --- */
+@media (max-width: 991px) {
+    html[lang="en"] .service-row,
+    html[lang="en"] .service-row.reverse {
+        grid-template-columns: 1fr !important;
+    }
+    
+    html[lang="en"] .service-row .service-content,
+    html[lang="en"] .service-row.reverse .service-content {
+        order: 1 !important; /* Text on top for mobile screens */
+        text-align: center !important;
+    }
+    
+    html[lang="en"] .service-row .service-image,
+    html[lang="en"] .service-row.reverse .service-image {
+        order: 2 !important; /* Image on bottom for mobile screens */
+    }
+}
+
+/* ======================================================================
+   MOBILE TYPOGRAPHY FIX FOR HERO TITLE
+   ====================================================================== */
+
+@media (max-width: 768px) {
+   .hero-creative-layered .hero-title {
+      font-size: 2rem !important; 
+      line-height: 1.3 !important;
+   }
+   
+   .hero-creative-layered {
+      padding: 120px 0 60px 0 !important; 
+   }
+}
+
+@media (max-width: 480px) {
+   .hero-creative-layered .hero-title {
+      font-size: 1.65rem !important; 
+   }
+}

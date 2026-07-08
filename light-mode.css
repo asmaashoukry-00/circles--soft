@@ -1,0 +1,54 @@
+/*
+ * Force light mode on ALL browsers / devices.
+ * "only light" is the key — it explicitly forbids the browser from
+ * adapting the page to dark mode, unlike plain "light" which is just a hint.
+ */
+
+:root {
+    color-scheme: only light !important;
+}
+
+html {
+    color-scheme: only light !important;
+    forced-color-adjust: none !important;
+    -webkit-text-size-adjust: 100%;
+    background-color: #ffffff !important;
+}
+
+body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+* {
+    forced-color-adjust: none !important;
+}
+
+/*
+ * Last-resort override for browsers that still fire the dark media query
+ * (Samsung Internet, Firefox, older Chrome) even after color-scheme: only light.
+ * Resets the most common properties that go wrong.
+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: only light !important;
+    }
+
+    html, body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+
+    * {
+        color-scheme: only light !important;
+        forced-color-adjust: none !important;
+        filter: none !important;
+    }
+
+    img, video, svg, canvas {
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}

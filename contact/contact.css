@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+:root {
+    --primary: #4F46E5;
+    --soft-bg: #fdfdfd;
+    --text-main: #1a1a1a;
+    --glass-border: rgba(0, 0, 0, 0.05);
+}
+
+body.contact-page-luxury {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--soft-bg);
+    color: var(--text-main);
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 20px 60px 20px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+.contact-master-card {
+    background: white;
+    padding: 60px;
+    border-radius: 40px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.03);
+}
+
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.ultra-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #424242;
+    /* color: #5856D6; */
+    background: rgba(79, 70, 229, 0.06);
+    padding: 6px 16px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.contact-main-title {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.aesthetic-text {
+    color: var(--primary);
+    font-style: italic;
+}
+
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 60px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-main-title { font-size: 32px; }
+}
+
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item-luxury {
+    position: relative;
+    padding-right: 20px;
+    margin-bottom: 25px;
+}
+
+html[dir="ltr"] .info-item-luxury {
+    padding-right: 0;
+    padding-left: 20px;
+}
+
+.dot-indicator {
+    position: absolute;
+    right: 0; top: 8px;
+    width: 6px; height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+html[dir="ltr"] .dot-indicator {
+    right: auto;
+    left: 0;
+}
+
+.info-item-luxury small { color: #94a3b8; font-size: 13px; }
+.info-item-luxury p { font-weight: 700; font-size: 18px; margin: 5px 0 0 0; }
+.phone-number { text-align: right; }
+
+html[dir="ltr"] .phone-number {
+    text-align: left;
+}
+
+/* الأيقونات الاحترافية */
+.social-wrapper-contact {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon-contact {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: #111 !important;
+
+    
+    transition: all 0.4s ease;
+}
+
+.social-icon-contact:hover {
+    transform: translateY(-5px);
+    color: #fff !important;
+}
+
+.social-icon-contact.linkedin:hover { background: #0077b5; }
+.social-icon-contact.twitter-x:hover { background: #000; }
+.social-icon-contact.instagram:hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+.social-icon-contact.facebook:hover { background: #1877f2; }
+
+/* الفورم */
+.form-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.full-width { grid-column: span 2; }
+
+@media (max-width: 600px) {
+    .form-inputs-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+}
+
+/* ستايل المدخلات */
+.input-luxury-group {
+    position: relative;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.input-luxury-group input, 
+.input-luxury-group textarea, 
+.input-luxury-group select {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #333;
+}
+
+.input-luxury-group label {
+    position: absolute;
+    right: 0; top: 10px;
+    color: #94a3b8;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+html[dir="ltr"] .input-luxury-group label {
+    right: auto;
+    left: 0;
+}
+
+.input-luxury-group input:focus ~ label,
+.input-luxury-group input:not(:placeholder-shown) ~ label,
+.input-luxury-group textarea:focus ~ label,
+.input-luxury-group textarea:not(:placeholder-shown) ~ label,
+.input-luxury-group select:focus ~ label,
+.input-luxury-group select:valid ~ label {
+    top: -20px;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.input-border {
+    position: absolute;
+    bottom: -1px; right: 0;
+    width: 0; height: 2px;
+    background: var(--primary);
+    transition: width 0.4s ease;
+}
+
+html[dir="ltr"] .input-border {
+    right: auto;
+    left: 0;
+}
+
+.input-luxury-group input:focus ~ .input-border { width: 100%; }
+
+
+/* زر اطلب عرض توضيحي المعدل */
+.form-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #111;
+    color: white;
+    
+    padding: 10px 30px; 
+    border-radius: 100px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn :hover {
+  
+    transform: translateY(-3px);
+    
+}
+

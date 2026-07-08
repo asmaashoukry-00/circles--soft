@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap');
+
+.footer-container {
+    background-color: #1a1e23;
+    color: #ffffff;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    padding-top: 80px;
+}
+
+html[dir="ltr"] .footer-container {
+    direction: ltr;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html[dir="ltr"] .f-section {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: none;
+}
+
+html[dir="ltr"] .f-section:first-child { border-right: none; }
+
+.footer-main-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 0 20px 50px 20px;
+    gap: 10px;
+}
+
+.f-section {
+    padding: 0 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.f-section:first-child { padding-right: 0; }
+.f-section:first-child { border-left: none; }
+.f-section:last-child { border-left: none; }
+
+.f-logo-white {
+    height: 48px;
+    margin-bottom: 20px;
+   
+}
+
+.brand-text {
+    color: #b0b5be;
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 280px;
+    font-weight: 400;
+}
+
+.f-section h3, .extra-solutions h3, .contact-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.no-wrap { white-space: nowrap; }
+
+.minimal-footer ul { list-style: none; padding: 0; margin: 0; }
+.minimal-footer ul li { margin-bottom: 14px; }
+.minimal-footer ul li a {
+    color: #b0b5be;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.minimal-footer ul li a:hover { color: #ffffff; padding-right: 5px; }
+html[dir="ltr"] .minimal-footer ul li a:hover { padding-right: 0; padding-left: 5px; }
+
+.f-divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.f-divider-thin {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom-flex {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 20px;
+}
+
+.legal-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #7a8090;
+    font-weight: 500;
+}
+
+.brand-link a { color: #7a8090; text-decoration: none; font-weight: 600; }
+.brand-link a:hover { color: #ffffff; }
+
+.social-wrapper { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+    .footer-main-grid { grid-template-columns: 1fr; gap: 0; }
+    .f-section { border: none; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .f-section:first-child { padding-top: 0; }
+    .f-section:last-child { border-bottom: none; }
+    .f-logo-white { height: 35px; }
+    .brand-text { max-width: 100%; }
+    .footer-container { padding-top: 50px; }
+    .footer-bottom-flex { flex-direction: column; gap: 30px; }
+    .social-wrapper { justify-content: flex-start; }
+    .legal-bar { flex-direction: column; gap: 15px; text-align: center; }
+}
+/* icons */
+.social-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 18px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon.linkedin:hover { 
+    background-color: #0077b5; 
+    box-shadow: 0 0 15px rgba(0, 119, 181, 0.5); 
+}
+
+.social-icon.twitter-x:hover { 
+    background-color: #000000; 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); 
+}
+
+.social-icon.instagram:hover { 
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+    box-shadow: 0 0 15px rgba(220, 39, 67, 0.4);
+}
+
+.social-icon.facebook:hover { 
+    background-color: #1877f2; 
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.5); 
+}
+
+.social-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.social-icon:hover::after {
+    left: 100%;
+}

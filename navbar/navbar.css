@@ -1,0 +1,752 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap");
+:root {
+  --primary: #4f46e5;
+  --yellow: #ffb800;
+  --blue-tag: #5856d6;
+  --nav-icon-color: #111827;
+}
+/* --------- */
+.dark-mode {
+  --nav-icon-color: #ffffff; 
+}
+.mobile-toggle .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--nav-icon-color); 
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: center;
+    position: absolute;
+}
+.nav-logo-image, 
+.lang-btn-main img {
+    filter: none !important; 
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+.dark-mode img:not(.no-invert) {
+}
+/* --------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Tajawal", sans-serif;
+  direction: rtl;
+  background: #fff;
+  margin: 0;
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+
+}
+
+/* ====================================================================== */
+/* FLOATING NAVBAR - Reduced spacing */
+/* ====================================================================== */
+
+.floating-nav {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  padding: 8px 20px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-text {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #111;
+}
+
+.nav-logo-text span {
+  color: var(--primary);
+}
+
+.nav-logo-image {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+  white-space: nowrap;
+  padding: 6px 10px;
+}
+
+.desktop-menu .mega-dropdown.active-link > .dropdown-toggle {
+  color: var(--primary);
+}
+
+.dropdown-toggle i {
+  transition: transform 0.3s ease;
+  font-size: 11px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.desktop-menu .mega-dropdown.active-link > .dropdown-toggle {
+  color: var(--primary);
+}
+
+.dropdown-toggle i {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+/* Desktop CTA button */
+.lang-btn-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Tajawal', sans-serif;
+    color: #444;
+    transition: all 0.3s ease;
+    height: 38px; 
+    white-space: nowrap;
+}
+
+.lang-btn-main img {
+    width: 20px;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+}
+.nav-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Tajawal", sans-serif;
+}
+
+.nav-btn.mobile-nav-btn {
+  display: none;
+}
+
+/* Mega Menu */
+.mega-dropdown {
+  position: relative;
+}
+
+.mega-dropdown .mega-menu {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  max-width: calc(100vw - 40px);
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  padding: 30px 25px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.mega-dropdown:hover > .mega-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.mega-column {
+  padding: 0 20px;
+  border-left: 1px solid #e5e7eb;
+  text-align: right;
+  direction: rtl;
+}
+
+.mega-column:first-child {
+  border-left: 1px solid #e5e7eb;
+  padding-left: 20px;
+}
+
+.mega-column h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+  text-align: right;
+}
+
+.mega-column a {
+  display: block;
+  padding: 8px 0;
+  color: #374151;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  text-align: right;
+}
+
+.mega-column a:hover {
+  color: var(--primary);
+  padding-right: 8px;
+  background: transparent;
+}
+
+.mega-column.special {
+  background: #f8fafc;
+  border-radius: 0;
+  padding: 0 20px;
+  border-left: 1px solid #e5e7eb;
+}
+
+.desktop-menu {
+  display: flex !important;
+}
+.mobile-menu {
+  display: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+  .floating-nav {
+    padding: 5px 15px;
+    top: 6px;
+    width: 95%;
+    border-radius: 20px;
+  }
+  .nav-logo-image {
+    height: 26px;
+  }
+  .nav-links a {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  .nav-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+  .mega-dropdown .mega-menu {
+    top: 60px;
+    padding: 30px 20px;
+  }
+  .mega-column {
+    padding: 0 15px;
+  }
+  .mega-column h4 {
+    font-size: 15px;
+  }
+}
+
+/* ====================================================================== */
+/* MODERN MOBILE SLIDING MENU (3-LEVEL PANEL) */
+/* ====================================================================== */
+
+@media (max-width: 992px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .desktop-menu,
+  .nav-left-actions.d-none {
+    display: none !important;
+  }
+
+  /* Container structure fixing the width and overlay */
+  .mobile-menu-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10000;
+    overflow: hidden;
+  }
+
+  .mobile-menu-sidebar.mobile-open {
+    right: 0;
+  }
+
+  /* Wrapper holding all sliding panels inside */
+  .panels-wrapper {
+    display: flex;
+    width: 300%; /* Enough room for 3 levels side-by-side */
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  /* Single sliding structural panel view */
+  .menu-panel {
+    width: 33.333%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 85px 20px 30px;
+    background: #fff;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Control states via parent panel active classes */
+  .mobile-menu-sidebar.active-level-0 .panels-wrapper {
+    transform: translateX(0%);
+  }
+
+  .mobile-menu-sidebar.active-level-1 .panels-wrapper {
+    transform: translateX(33.333%);
+  }
+
+  .mobile-menu-sidebar.active-level-2 .panels-wrapper {
+    transform: translateX(66.666%);
+  }
+
+  /* List navigation items typography */
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .mobile-nav-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 4px;
+    font-size: 15px;
+    color: #1f2937;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-item a:hover,
+  .mobile-nav-item a.active {
+    color: var(--primary);
+  }
+
+  .mobile-nav-item a .arrow-dir {
+    font-size: 12px;
+    color: #9ca3af;
+    transition: transform 0.2s ease;
+  }
+
+  /* Header controls for nested screens */
+  .menu-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: 15px;
+  }
+
+  .menu-header .back-btn {
+    background: #f8fafc;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #1f2937;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .menu-header .back-btn:hover {
+    background: #f1f5f9;
+    color: var(--primary);
+  }
+
+  .menu-header span {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+  }
+
+  /* Embedded footer actions matching the visual mockup rules */
+  .mobile-menu-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .mobile-lang-container {
+    margin-bottom: 16px;
+  }
+
+  .mobile-lang-container .lang-btn-main {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 25px;
+    background: #f8fafc;
+  }
+
+  .mobile-menu-desc {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .mobile-cta-btn {
+    width: 100%;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: "Tajawal", sans-serif;
+    transition: background 0.2s ease;
+  }
+
+  .mobile-cta-btn:hover {
+    background: var(--primary);
+  }
+}
+
+/* ====================================================================== */
+/* LTR BILINGUAL ALIGNMENT FIXES (ENGLISH COMPATIBILITY) */
+/* ====================================================================== */
+
+html[dir="ltr"] body {
+    direction: ltr !important;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+html[dir="ltr"] .mobile-menu-sidebar {
+  right: auto;
+  left: -100%;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+html[dir="ltr"] .mobile-menu-sidebar.mobile-open {
+  left: 0;
+}
+
+/* Reverse sliding animation paths under LTR layout */
+html[dir="ltr"] .mobile-menu-sidebar.active-level-0 .panels-wrapper {
+  transform: translateX(0%);
+}
+
+html[dir="ltr"] .mobile-menu-sidebar.active-level-1 .panels-wrapper {
+  transform: translateX(-33.333%);
+}
+
+html[dir="ltr"] .mobile-menu-sidebar.active-level-2 .panels-wrapper {
+  transform: translateX(-66.666%);
+}
+
+/* Icon flippers across orientations */
+html[dir="ltr"] .mobile-nav-item a .arrow-dir {
+  transform: rotate(180deg);
+}
+
+html[dir="ltr"] .menu-header .back-icon-dir {
+  transform: rotate(180deg);
+}
+
+/* Hide mobile structural components on Desktop layout by default */
+.mobile-menu-sidebar,
+.mobile-overlay,
+.mobile-toggle {
+    display: none !important;
+}
+
+/* Ensure the wrapper sets a hidden baseline before any trigger activation */
+@media (max-width: 992px) {
+    .mobile-toggle {
+        display: block !important;
+    }
+    
+    .mobile-menu-sidebar {
+        display: block !important; /* Allow the drawer to exist only inside responsive viewport */
+    }
+    
+    /* Hamburger line transformation rules when .active class is applied */
+    .mobile-toggle .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .mobile-toggle .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-toggle .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+}
+
+html[dir="ltr"] .floating-nav {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+}
+
+html[dir="ltr"] .nav-links {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    flex-direction: row !important; 
+}
+
+/* ====================================================================== */
+/* FIXED LTR MEGA MENU INNER STRUCTURE (ROOT FORCE) */
+/* ====================================================================== */
+html[dir="ltr"] .mega-column {
+    text-align: left !important;
+    direction: ltr !important;
+    border-left: none !important;
+    border-right: 1px solid #e5e7eb !important;
+    padding: 0 20px !important;
+}
+
+html[dir="ltr"] .mega-column:first-child {
+    border-right: 1px solid #e5e7eb !important;
+    padding-right: 20px !important;
+    padding-left: 0 !important;
+}
+
+html[dir="ltr"] .mega-column:last-child {
+    border-right: none !important;
+}
+
+html[dir="ltr"] .mega-column h4 {
+    text-align: left !important;
+    border-bottom: 2px solid #e5e7eb !important;
+}
+
+html[dir="ltr"] .mega-column a {
+    text-align: left !important;
+}
+
+html[dir="ltr"] .mega-column a:hover {
+    padding-right: 0 !important;
+    padding-left: 8px !important;
+}
+
+html[dir="ltr"] .mega-column.special {
+    border-right: 1px solid #e5e7eb !important;
+    border-left: none !important;
+}
+
+
+/* ====================================================================== */
+/* LUXURY SAAS HAMBURGER TO X ANIMATION */
+/* ====================================================================== */
+
+.mobile-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10001; 
+    display: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-toggle .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 16px; 
+    position: relative;
+}
+
+/* التنسيق الأساسي للأسطر الثلاثة */
+.mobile-toggle .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #111827; 
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    transform-origin: center;
+    position: absolute;
+}
+
+/* توزيع الأسطر الثلاثة في الحالة الطبيعية (قبل الضغط) */
+.mobile-toggle .hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.mobile-toggle .hamburger span:nth-child(2) {
+    top: 7px;
+    right: 0;   
+}
+
+html[dir="ltr"] .mobile-toggle .hamburger span:nth-child(2) {
+    right: auto;
+    left: 0;    
+}
+
+.mobile-toggle .hamburger span:nth-child(3) {
+    top: 14px;
+}
+
+/* ====================================================================== */
+/* LUXURY HAMBURGER & MOBILE ACTIONS - CLEANED AND OPTIMIZED */
+/* ====================================================================== */
+
+.mobile-only-actions {
+    display: none;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-only-actions .mobile-nav-btn {
+    display: inline-block !important;
+    background: #111827;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: "Tajawal", sans-serif;
+    white-space: nowrap; 
+}
+
+.mobile-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 10001;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    display: none;
+}
+
+.mobile-toggle .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 18px;
+    position: relative;
+}
+
+.mobile-toggle .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #111827;
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: center;
+    position: absolute;
+}
+
+.mobile-toggle .hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.mobile-toggle .hamburger span:nth-child(2) {
+    top: 8px;
+}
+
+.mobile-toggle .hamburger span:nth-child(3) {
+    top: 16px;
+}
+
+.mobile-toggle .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-toggle .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.mobile-toggle .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 992px) {
+    .mobile-only-actions {
+        display: flex !important;
+        align-items: center !important;
+    }
+    .mobile-toggle {
+        display: block !important;
+    }
+}
