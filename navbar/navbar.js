@@ -54,35 +54,35 @@ function loadNavbar() {
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
     let savedLang = localStorage.getItem("selectedLang") || "ar";
 
-    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً وبأعلى سرعة ممكنة
+    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً
     if (cachedNavbar) {
         placeholder.innerHTML = cachedNavbar;
         initNavbarFeatures(savedLang);
     }
 
-    // بالخلفية يتم جلب الملف للتأكد من عدم وجود تحديثات وتحديث الكاش
+    // بالخلفية يتم جلب أحدث نسخة
     fetch('/navbar/navbar.html')
         .then(res => res.text())
         .then(data => {
             if (cachedNavbar !== data) {
                 localStorage.setItem('cachedNavbarHTML', data);
-                placeholder.innerHTML = data; // تحديث الواجهة فقط إذا وجد تغيير بالملف الاصلي
+                placeholder.innerHTML = data;
                 initNavbarFeatures(savedLang);
             }
         })
         .catch(err => {
-            console.warn("تنبيه: تم استخدام النسخة الاحتياطية المخزنة للناف بار بنجاح.");
+            console.warn("تم استخدام النسخة المخزنة للناف بار.");
         });
 }
 
 function initNavbarFeatures(lang) {
     window.navbarReady = true;
-    applyLanguage(lang);
+    window.applyLanguage(lang);        // ✅ تم التعديل
     initGlobalListeners();
 }
 
 function initGlobalListeners() {
-    // إغلاق القائمة عند الضغط على الخلفية الشفافة (Overlay)
+    // إغلاق القائمة عند الضغط على الـ Overlay
     document.addEventListener('click', function(e) {
         const overlay = document.getElementById('mobileOverlay');
         if (overlay && e.target === overlay) {
@@ -90,7 +90,7 @@ function initGlobalListeners() {
         }
     });
 
-    // إغلاق القائمة عند الضغط على زر Escape
+    // إغلاق القائمة عند Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
@@ -101,60 +101,44 @@ function initGlobalListeners() {
 function toggleLanguage() {
     const currentLang = localStorage.getItem("selectedLang") || "ar";
     const newLang = currentLang === "ar" ? "en" : "ar";
-    applyLanguage(newLang);
+    window.applyLanguage(newLang);     // ✅ تم التعديل
 }
 
-// function applyLanguage(lang) {
-//     const elements = document.querySelectorAll(".lang-key");
+// دالة تغيير اللغة (مفعلة ومرفقة على window)
+window.applyLanguage = function(lang) {
+    const elements = document.querySelectorAll(".lang-key");
     
-//     elements.forEach((el) => {
-//         if (!el.getAttribute("data-ar")) {
-//             el.setAttribute("data-ar", el.innerHTML.trim());
-//         }
+    elements.forEach((el) => {
+        if (!el.getAttribute("data-ar")) {
+            el.setAttribute("data-ar", el.innerHTML.trim());
+        }
 
-//         if (lang === "en") {
-//             const enText = el.getAttribute("data-en");
-//             if (enText) el.innerHTML = enText;
-//         } else {
-//             const arText = el.getAttribute("data-ar");
-//             if (arText) el.innerHTML = arText;
-//         }
-//     });
+        if (lang === "en") {
+            const enText = el.getAttribute("data-en");
+            if (enText) el.innerHTML = enText;
+        } else {
+            const arText = el.getAttribute("data-ar");
+            if (arText) el.innerHTML = arText;
+        }
+    });
 
-//     document.documentElement.lang = lang;
-//     document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
-//     document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+    document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
 
-//     // const updateFlagAndText = (flagId, textId) => {
-//     //     const flagImg = document.getElementById(flagId);
-//     //     const textSpan = document.getElementById(textId);
-        
-//     //     if (flagImg && textSpan) {
-//     //         if (lang === 'en') {
-//     //             flagImg.src = "https://flagcdn.com/w20/sa.png"; 
-//     //             textSpan.textContent = "العربية";
-//     //         } else {
-//     //             flagImg.src = "https://flagcdn.com/w20/us.png"; 
-//     //             textSpan.textContent = "English";
-//     //         }
-//     //     }
-//     // };
-
-//     // updateFlagAndText("desktopLangFlag", "desktopLangText");
-//     // updateFlagAndText("mobileLangFlag", "mobileLangText");
-
-//     localStorage.setItem("selectedLang", lang);
+    localStorage.setItem("selectedLang", lang);
     
-//     const sidebar = document.getElementById('mobileMenuSidebar');
-//     if (sidebar && sidebar.classList.contains('active-level-2')) {
-//         const activeModule = sidebar.getAttribute('data-current-module');
-//         if (activeModule) openSubMenu(activeModule);
-//     }
+    // تحديث القائمة الجانبية إذا كانت مفتوحة
+    const sidebar = document.getElementById('mobileMenuSidebar');
+    if (sidebar && sidebar.classList.contains('active-level-2')) {
+        const activeModule = sidebar.getAttribute('data-current-module');
+        if (activeModule) openSubMenu(activeModule);
+    }
     
-//     if (window.AOS) AOS.refresh();
-// }
+    if (window.AOS) AOS.refresh();
+};
 
-// التحكم بقائمة الموبايل والانتقال السلس
+// التحكم بقائمة الموبايل
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobileMenuSidebar');
     const overlay = document.getElementById('mobileOverlay');
@@ -178,8 +162,7 @@ function closeMobileMenu() {
     const toggleBtn = document.querySelector('.mobile-toggle .hamburger');
     
     if (sidebar) {
-        sidebar.classList.remove('mobile-open');
-        sidebar.classList.remove('active-level-1', 'active-level-2');
+        sidebar.classList.remove('mobile-open', 'active-level-1', 'active-level-2');
         sidebar.classList.add('active-level-0');
     }
     if (overlay) overlay.style.display = 'none';
