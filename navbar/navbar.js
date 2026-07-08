@@ -1,3 +1,7 @@
+// ======================================================================
+// INTEGRATED DYNAMIC NAV-SYSTEM & BILINGUAL TOGGLE (OPTIMIZED & FAST)
+// ======================================================================
+
 const megaMenuData = {
   finance: {
     titleAr: "المنظومة المالية والمحاسبية",
@@ -42,48 +46,43 @@ const megaMenuData = {
   }
 };
 
+// دالة تحميل الناف بار الذكية فائقة السرعة والتخزين اللحظي
 function loadNavbar() {
     const placeholder = document.getElementById('navbar-placeholder');
-    const savedLang = localStorage.getItem("selectedLang") || "ar";
-
-    if (!placeholder) {
-       
-        initNavbarFeatures(savedLang);
-        return;
-    }
+    if (!placeholder) return;
 
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
-    const savedLang = localStorage.getItem("selectedLang") !== null ?
-                      localStorage.getItem("selectedLang") : "ar";
+    let savedLang = localStorage.getItem("selectedLang") || "en";
 
+    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً وبأعلى سرعة ممكنة
     if (cachedNavbar) {
         placeholder.innerHTML = cachedNavbar;
         initNavbarFeatures(savedLang);
     }
 
+    // بالخلفية يتم جلب الملف للتأكد من عدم وجود تحديثات وتحديث الكاش
     fetch('/navbar/navbar.html')
         .then(res => res.text())
         .then(data => {
             if (cachedNavbar !== data) {
                 localStorage.setItem('cachedNavbarHTML', data);
-                placeholder.innerHTML = data;
+                placeholder.innerHTML = data; // تحديث الواجهة فقط إذا وجد تغيير بالملف الاصلي
                 initNavbarFeatures(savedLang);
             }
         })
         .catch(err => {
-            console.warn("Failed to fetch navbar update.");
+            console.warn("تنبيه: تم استخدام النسخة الاحتياطية المخزنة للناف بار بنجاح.");
         });
 }
 
 function initNavbarFeatures(lang) {
     window.navbarReady = true;
-    if (typeof window.applyLanguage === "function") {
-        window.applyLanguage(lang);
-    }
+    applyLanguage(lang);
     initGlobalListeners();
 }
 
 function initGlobalListeners() {
+    // إغلاق القائمة عند الضغط على الخلفية الشفافة (Overlay)
     document.addEventListener('click', function(e) {
         const overlay = document.getElementById('mobileOverlay');
         if (overlay && e.target === overlay) {
@@ -91,6 +90,7 @@ function initGlobalListeners() {
         }
     });
 
+    // إغلاق القائمة عند الضغط على زر Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
@@ -99,14 +99,62 @@ function initGlobalListeners() {
 }
 
 function toggleLanguage() {
-    const currentLang = localStorage.getItem("selectedLang") !== null ?
-                        localStorage.getItem("selectedLang") : "ar";
+    const currentLang = localStorage.getItem("selectedLang") || "en";
     const newLang = currentLang === "ar" ? "en" : "ar";
-    if (typeof window.applyLanguage === "function") {
-        window.applyLanguage(newLang);
-    }
+    applyLanguage(newLang);
 }
 
+function applyLanguage(lang) {
+    const elements = document.querySelectorAll(".lang-key");
+    
+    elements.forEach((el) => {
+        if (!el.getAttribute("data-ar")) {
+            el.setAttribute("data-ar", el.innerHTML.trim());
+        }
+
+        if (lang === "en") {
+            const enText = el.getAttribute("data-en");
+            if (enText) el.innerHTML = enText;
+        } else {
+            const arText = el.getAttribute("data-ar");
+            if (arText) el.innerHTML = arText;
+        }
+    });
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+    document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
+
+    // const updateFlagAndText = (flagId, textId) => {
+    //     const flagImg = document.getElementById(flagId);
+    //     const textSpan = document.getElementById(textId);
+        
+    //     if (flagImg && textSpan) {
+    //         if (lang === 'en') {
+    //             flagImg.src = "https://flagcdn.com/w20/sa.png"; 
+    //             textSpan.textContent = "العربية";
+    //         } else {
+    //             flagImg.src = "https://flagcdn.com/w20/us.png"; 
+    //             textSpan.textContent = "English";
+    //         }
+    //     }
+    // };
+
+    // updateFlagAndText("desktopLangFlag", "desktopLangText");
+    // updateFlagAndText("mobileLangFlag", "mobileLangText");
+
+    localStorage.setItem("selectedLang", lang);
+    
+    const sidebar = document.getElementById('mobileMenuSidebar');
+    if (sidebar && sidebar.classList.contains('active-level-2')) {
+        const activeModule = sidebar.getAttribute('data-current-module');
+        if (activeModule) openSubMenu(activeModule);
+    }
+    
+    if (window.AOS) AOS.refresh();
+}
+
+// التحكم بقائمة الموبايل والانتقال السلس
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobileMenuSidebar');
     const overlay = document.getElementById('mobileOverlay');
@@ -130,7 +178,8 @@ function closeMobileMenu() {
     const toggleBtn = document.querySelector('.mobile-toggle .hamburger');
     
     if (sidebar) {
-        sidebar.classList.remove('mobile-open', 'active-level-1', 'active-level-2');
+        sidebar.classList.remove('mobile-open');
+        sidebar.classList.remove('active-level-1', 'active-level-2');
         sidebar.classList.add('active-level-0');
     }
     if (overlay) overlay.style.display = 'none';
@@ -145,12 +194,12 @@ function navigateToPanel(levelIndex) {
 }
 
 function openSubMenu(moduleKey) {
-    const currentLang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+    const currentLang = document.documentElement.getAttribute('dir') === 'ltr' ? 'en' : 'ar';
     const targetData = megaMenuData[moduleKey];
     const sidebar = document.getElementById('mobileMenuSidebar');
     
-    if (!targetData || !sidebar) return;
-    sidebar.setAttribute('data-current-module', moduleKey);
+    if (!targetData) return;
+    if (sidebar) sidebar.setAttribute('data-current-module', moduleKey);
 
     const titleContainer = document.getElementById('currentSubMenuTitle');
     if (titleContainer) {
@@ -181,7 +230,7 @@ function startSVGAnimation() {
     document.querySelectorAll('.hand-drawn-circle path')
         .forEach(path => {
             path.style.animation = "none";
-            path.getBoundingClientRect();
+            path.getBoundingClientRect(); // force reflow
             path.style.animation = "drawCircle 5s ease-out infinite";
         });
 }
