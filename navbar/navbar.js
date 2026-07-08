@@ -44,7 +44,13 @@ const megaMenuData = {
 
 function loadNavbar() {
     const placeholder = document.getElementById('navbar-placeholder');
-    if (!placeholder) return;
+    const savedLang = localStorage.getItem("selectedLang") || "ar";
+
+    if (!placeholder) {
+       
+        initNavbarFeatures(savedLang);
+        return;
+    }
 
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
     const savedLang = localStorage.getItem("selectedLang") !== null ?
