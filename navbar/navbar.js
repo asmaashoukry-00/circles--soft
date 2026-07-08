@@ -1,3 +1,7 @@
+// ======================================================================
+// INTEGRATED DYNAMIC NAV-SYSTEM & BILINGUAL TOGGLE (OPTIMIZED & FAST)
+// ======================================================================
+
 const megaMenuData = {
   finance: {
     titleAr: "المنظومة المالية والمحاسبية",
@@ -42,23 +46,21 @@ const megaMenuData = {
   }
 };
 
+// دالة تحميل الناف بار الذكية فائقة السرعة والتخزين اللحظي
 function loadNavbar() {
     const placeholder = document.getElementById('navbar-placeholder');
     if (!placeholder) return;
 
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
-    let savedLang = localStorage.getItem("selectedLang");
+    let savedLang = localStorage.getItem("selectedLang") || "ar";
 
-    if (!savedLang) {
-        savedLang = "ar";
-        localStorage.setItem("selectedLang", "ar");
-    }
-
+    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً
     if (cachedNavbar) {
         placeholder.innerHTML = cachedNavbar;
         initNavbarFeatures(savedLang);
     }
 
+    // بالخلفية يتم جلب أحدث نسخة
     fetch('/navbar/navbar.html')
         .then(res => res.text())
         .then(data => {
@@ -68,16 +70,19 @@ function loadNavbar() {
                 initNavbarFeatures(savedLang);
             }
         })
-        .catch(() => console.warn("تم استخدام النسخة المخزنة للناف بار."));
+        .catch(err => {
+            console.warn("تم استخدام النسخة المخزنة للناف بار.");
+        });
 }
 
 function initNavbarFeatures(lang) {
     window.navbarReady = true;
-    window.applyLanguage(lang);
+    window.applyLanguage(lang);        // ✅ تم التعديل
     initGlobalListeners();
 }
 
 function initGlobalListeners() {
+    // إغلاق القائمة عند الضغط على الـ Overlay
     document.addEventListener('click', function(e) {
         const overlay = document.getElementById('mobileOverlay');
         if (overlay && e.target === overlay) {
@@ -85,6 +90,7 @@ function initGlobalListeners() {
         }
     });
 
+    // إغلاق القائمة عند Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
@@ -95,9 +101,10 @@ function initGlobalListeners() {
 function toggleLanguage() {
     const currentLang = localStorage.getItem("selectedLang") || "ar";
     const newLang = currentLang === "ar" ? "en" : "ar";
-    window.applyLanguage(newLang);
+    window.applyLanguage(newLang);     // ✅ تم التعديل
 }
 
+// دالة تغيير اللغة (مفعلة ومرفقة على window)
 window.applyLanguage = function(lang) {
     const elements = document.querySelectorAll(".lang-key");
     
@@ -121,6 +128,7 @@ window.applyLanguage = function(lang) {
 
     localStorage.setItem("selectedLang", lang);
     
+    // تحديث القائمة الجانبية إذا كانت مفتوحة
     const sidebar = document.getElementById('mobileMenuSidebar');
     if (sidebar && sidebar.classList.contains('active-level-2')) {
         const activeModule = sidebar.getAttribute('data-current-module');
@@ -130,6 +138,7 @@ window.applyLanguage = function(lang) {
     if (window.AOS) AOS.refresh();
 };
 
+// التحكم بقائمة الموبايل
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobileMenuSidebar');
     const overlay = document.getElementById('mobileOverlay');
@@ -204,13 +213,9 @@ function startSVGAnimation() {
     document.querySelectorAll('.hand-drawn-circle path')
         .forEach(path => {
             path.style.animation = "none";
-            path.getBoundingClientRect();
+            path.getBoundingClientRect(); // force reflow
             path.style.animation = "drawCircle 5s ease-out infinite";
         });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const defaultLang = localStorage.getItem("selectedLang") || "ar";
-    window.applyLanguage(defaultLang);
-    loadNavbar();
-});
+document.addEventListener('DOMContentLoaded', loadNavbar);
