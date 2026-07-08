@@ -41,7 +41,7 @@ window.applyLanguage = function(lang) {
 
     // 4. الاتجاه
     document.documentElement.lang = lang;
-    const dir = (lang === "en") ? "rtl" : "ltr";
+    const dir = (lang === "en") ? "ltr" : "rtl";
     document.documentElement.dir = dir;
     document.body.setAttribute("dir", dir);
 
