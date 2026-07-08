@@ -43,10 +43,7 @@ window.addEventListener('languageChanged', (e) => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") || "ar";
-    window.applyLanguage(savedLang);
-});
+
 
 // Dynamic Title Auto-Switcher for all pages
 const listenToTitleAndLangChanges = () => {
