@@ -81,7 +81,7 @@ const titleInterval = setInterval(() => {
 
 // ----
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") || " ar";
+    const savedLang = localStorage.getItem("selectedLang") || "ar";
     
     window.applyLanguage(savedLang);
 });
