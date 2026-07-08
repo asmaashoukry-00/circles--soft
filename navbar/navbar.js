@@ -52,37 +52,37 @@ function loadNavbar() {
     if (!placeholder) return;
 
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
-    let savedLang = localStorage.getItem("selectedLang") || "ar";
+    let savedLang = localStorage.getItem("selectedLang") || "en";
 
-    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً
+    // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً وبأعلى سرعة ممكنة
     if (cachedNavbar) {
         placeholder.innerHTML = cachedNavbar;
         initNavbarFeatures(savedLang);
     }
 
-    // بالخلفية يتم جلب أحدث نسخة
+    // بالخلفية يتم جلب الملف للتأكد من عدم وجود تحديثات وتحديث الكاش
     fetch('/navbar/navbar.html')
         .then(res => res.text())
         .then(data => {
             if (cachedNavbar !== data) {
                 localStorage.setItem('cachedNavbarHTML', data);
-                placeholder.innerHTML = data;
+                placeholder.innerHTML = data; // تحديث الواجهة فقط إذا وجد تغيير بالملف الاصلي
                 initNavbarFeatures(savedLang);
             }
         })
         .catch(err => {
-            console.warn("تم استخدام النسخة المخزنة للناف بار.");
+            console.warn("تنبيه: تم استخدام النسخة الاحتياطية المخزنة للناف بار بنجاح.");
         });
 }
 
 function initNavbarFeatures(lang) {
     window.navbarReady = true;
-    window.applyLanguage(lang);        // ✅ تم التعديل
+    applyLanguage(lang);
     initGlobalListeners();
 }
 
 function initGlobalListeners() {
-    // إغلاق القائمة عند الضغط على الـ Overlay
+    // إغلاق القائمة عند الضغط على الخلفية الشفافة (Overlay)
     document.addEventListener('click', function(e) {
         const overlay = document.getElementById('mobileOverlay');
         if (overlay && e.target === overlay) {
@@ -90,7 +90,7 @@ function initGlobalListeners() {
         }
     });
 
-    // إغلاق القائمة عند Escape
+    // إغلاق القائمة عند الضغط على زر Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
@@ -99,13 +99,12 @@ function initGlobalListeners() {
 }
 
 function toggleLanguage() {
-    const currentLang = localStorage.getItem("selectedLang") || "ar";
+    const currentLang = localStorage.getItem("selectedLang") || "en";
     const newLang = currentLang === "ar" ? "en" : "ar";
-    window.applyLanguage(newLang);     // ✅ تم التعديل
+    applyLanguage(newLang);
 }
 
-// دالة تغيير اللغة (مفعلة ومرفقة على window)
-window.applyLanguage = function(lang) {
+function applyLanguage(lang) {
     const elements = document.querySelectorAll(".lang-key");
     
     elements.forEach((el) => {
@@ -126,9 +125,26 @@ window.applyLanguage = function(lang) {
     document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
     document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
 
+    // const updateFlagAndText = (flagId, textId) => {
+    //     const flagImg = document.getElementById(flagId);
+    //     const textSpan = document.getElementById(textId);
+        
+    //     if (flagImg && textSpan) {
+    //         if (lang === 'en') {
+    //             flagImg.src = "https://flagcdn.com/w20/sa.png"; 
+    //             textSpan.textContent = "العربية";
+    //         } else {
+    //             flagImg.src = "https://flagcdn.com/w20/us.png"; 
+    //             textSpan.textContent = "English";
+    //         }
+    //     }
+    // };
+
+    // updateFlagAndText("desktopLangFlag", "desktopLangText");
+    // updateFlagAndText("mobileLangFlag", "mobileLangText");
+
     localStorage.setItem("selectedLang", lang);
     
-    // تحديث القائمة الجانبية إذا كانت مفتوحة
     const sidebar = document.getElementById('mobileMenuSidebar');
     if (sidebar && sidebar.classList.contains('active-level-2')) {
         const activeModule = sidebar.getAttribute('data-current-module');
@@ -136,9 +152,9 @@ window.applyLanguage = function(lang) {
     }
     
     if (window.AOS) AOS.refresh();
-};
+}
 
-// التحكم بقائمة الموبايل
+// التحكم بقائمة الموبايل والانتقال السلس
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobileMenuSidebar');
     const overlay = document.getElementById('mobileOverlay');
@@ -162,7 +178,8 @@ function closeMobileMenu() {
     const toggleBtn = document.querySelector('.mobile-toggle .hamburger');
     
     if (sidebar) {
-        sidebar.classList.remove('mobile-open', 'active-level-1', 'active-level-2');
+        sidebar.classList.remove('mobile-open');
+        sidebar.classList.remove('active-level-1', 'active-level-2');
         sidebar.classList.add('active-level-0');
     }
     if (overlay) overlay.style.display = 'none';

@@ -77,11 +77,3 @@ const titleInterval = setInterval(() => {
     checksCount++;
     if (checksCount > 6) clearInterval(titleInterval);
 }, 500);
-
-
-// ----
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") || "ar";
-    
-    window.applyLanguage(savedLang);
-});
