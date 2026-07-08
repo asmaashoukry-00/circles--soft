@@ -52,7 +52,7 @@ function loadNavbar() {
     if (!placeholder) return;
 
     const cachedNavbar = localStorage.getItem('cachedNavbarHTML');
-    let savedLang = localStorage.getItem("selectedLang") || "en";
+    let savedLang = localStorage.getItem("selectedLang") || "ar";
 
     // إذا كان الكود مخزن مسبقاً، يتم عرضه فوراً وبأعلى سرعة ممكنة
     if (cachedNavbar) {
