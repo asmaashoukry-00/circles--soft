@@ -55,7 +55,7 @@ const listenToTitleAndLangChanges = () => {
 
     // Get current active language from DOM or LocalStorage
     const currentLang = document.documentElement.lang || localStorage.getItem("selectedLang") || "ar";
-    const targetTitle = currentLang === "en" ? titleEl.getAttribute("data-en") : titleEl.getAttribute("data-ar");
+    const targetTitle = currentLang === "ar" ? titleEl.getAttribute("data-ar") : titleEl.getAttribute("data-en");
     
     // Only update if the title is actually different to prevent infinite loops
     if (document.title !== targetTitle && targetTitle) {
