@@ -92,14 +92,18 @@ function initGlobalListeners() {
     });
 }
 
-// function toggleLanguage() {
-//     const currentLang = localStorage.getItem("selectedLang") !== null ?
-//                         localStorage.getItem("selectedLang") : "ar";
-//     const newLang = currentLang === "ar" ? "en" : "ar";
-//     if (typeof window.applyLanguage === "function") {
-//         window.applyLanguage(newLang);
-//     }
-// }
+function toggleLanguage() {
+    const currentLang = localStorage.getItem("selectedLang") !== null ?
+                        localStorage.getItem("selectedLang") : "ar";
+    
+    const newLang = currentLang === "ar" ? "en" : "ar";
+    
+    if (typeof window.applyLanguage === "function") {
+        window.applyLanguage(newLang);
+    } else {
+        console.error("applyLanguage function is not defined yet.");
+    }
+}
 
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobileMenuSidebar');
