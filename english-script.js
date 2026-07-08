@@ -65,9 +65,3 @@ window.addEventListener('languageChanged', (e) => {
     });
 });
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") !== null ? 
-                      localStorage.getItem("selectedLang") : "ar";
-    window.applyLanguage(savedLang);
-});
