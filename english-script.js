@@ -1,69 +1,79 @@
-// Language System - Clean & Optimized for Images
 window.applyLanguage = function(lang) {
-    lang = lang || "ar";
-
-    // 1. النصوص
-    document.querySelectorAll(".lang-key").forEach(el => {
-        if (!el.hasAttribute("data-ar")) {
-            el.setAttribute("data-ar", el.innerHTML.trim());
-        }
-        const text = (lang === "en") ? 
-            el.getAttribute("data-en") : 
-            el.getAttribute("data-ar");
+    // 1. Translate normal text elements
+    document.querySelectorAll(".lang-key").forEach((el) => {
+        if (!el.getAttribute("data-ar")) el.setAttribute("data-ar", el.innerHTML.trim());
+        const text = (lang === "en") ? el.getAttribute("data-en") : el.getAttribute("data-ar");
         if (text) el.innerHTML = text;
     });
 
-    // 2. الصور - نسخة سريعة ومحسنة
+    // 2. Translate images
     document.querySelectorAll('.lang-image').forEach(img => {
-        const targetSrc = (lang === "en") ? 
-            img.getAttribute("data-en-src") : 
-            img.getAttribute("data-ar-src");
-
-        if (targetSrc && targetSrc !== img.src) {
-            // تبديل مباشر + fallback
-            img.style.opacity = "0.6";
-            img.src = targetSrc;
-            
-            // إرجاع الشفافية بعد التحميل
-            img.onload = () => {
-                img.style.opacity = "1";
-            };
+        const arSrc = img.getAttribute('data-ar-src');
+        const enSrc = img.getAttribute('data-en-src');
+        if (arSrc && enSrc) {
+            img.src = (lang === 'en') ? enSrc : arSrc;
         }
     });
 
-    // 3. Title
-    const titleEl = document.querySelector('title[data-ar][data-en]');
-    if (titleEl) {
-        document.title = (lang === "en") ? 
-            titleEl.getAttribute("data-en") : 
-            titleEl.getAttribute("data-ar");
+    // 3. Translate page title dynamically for all pages
+    const pageTitleEl = document.querySelector('title[data-ar][data-en]');
+    if (pageTitleEl) {
+        document.title = (lang === "en") ? pageTitleEl.getAttribute("data-en") : pageTitleEl.getAttribute("data-ar");
     }
 
-    // 4. الاتجاه
+    // 4. Set page direction and language attributes
     document.documentElement.lang = lang;
-    const dir = (lang === "en") ? "ltr" : "rtl";
-    document.documentElement.dir = dir;
-    document.body.setAttribute("dir", dir);
-
+    document.documentElement.dir = (lang === "en") ? "ltr" : "rtl";
+    document.body.setAttribute("dir", (lang === "en") ? "ltr" : "rtl");
     localStorage.setItem("selectedLang", lang);
 
-    window.dispatchEvent(new CustomEvent('languageChanged', { 
-        detail: { lang: lang } 
-    }));
+    // 5. Dispatch custom language event
+    const event = new CustomEvent('languageChanged', { detail: { lang: lang } });
+    window.dispatchEvent(event);
 };
 
-// Listener للصور فقط
 window.addEventListener('languageChanged', (e) => {
     const lang = e.detail.lang;
     document.querySelectorAll('.lang-image').forEach(img => {
-        const targetSrc = (lang === "en") ? 
-            img.getAttribute("data-en-src") : 
-            img.getAttribute("data-ar-src");
-
-        if (targetSrc && targetSrc !== img.src) {
-            img.style.opacity = "0.6";
-            img.src = targetSrc;
-            img.onload = () => { img.style.opacity = "1"; };
+        const arSrc = img.getAttribute('data-ar-src');
+        const enSrc = img.getAttribute('data-en-src');
+        if (arSrc && enSrc) {
+            img.src = (lang === 'en') ? enSrc : arSrc;
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem("selectedLang") || "ar";
+    window.applyLanguage(savedLang);
+});
+
+// Dynamic Title Auto-Switcher for all pages
+const listenToTitleAndLangChanges = () => {
+    const titleEl = document.querySelector('title[data-ar][data-en]');
+    if (!titleEl) return;
+
+    // Get current active language from DOM or LocalStorage
+    const currentLang = document.documentElement.lang || localStorage.getItem("selectedLang") || "ar";
+    const targetTitle = currentLang === "ar" ? titleEl.getAttribute("data-ar") : titleEl.getAttribute("data-en");
+    
+    // Only update if the title is actually different to prevent infinite loops
+    if (document.title !== targetTitle && targetTitle) {
+        document.title = targetTitle;
+    }
+};
+
+// Run immediately on script load
+listenToTitleAndLangChanges();
+
+// Watch for any background script modifying the <html> tag or localStorage
+const titleGlobalObserver = new MutationObserver(() => listenToTitleAndLangChanges());
+titleGlobalObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang', 'dir'] });
+
+// Check every 500ms for the first 3 seconds to catch delayed navbar/footer loads
+let checksCount = 0;
+const titleInterval = setInterval(() => {
+    listenToTitleAndLangChanges();
+    checksCount++;
+    if (checksCount > 6) clearInterval(titleInterval);
+}, 500);
