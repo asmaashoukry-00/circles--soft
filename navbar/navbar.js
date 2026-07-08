@@ -99,60 +99,60 @@ function initGlobalListeners() {
 }
 
 function toggleLanguage() {
-    const currentLang = localStorage.getItem("selectedLang") || "en";
+    const currentLang = localStorage.getItem("selectedLang") || "ar";
     const newLang = currentLang === "ar" ? "en" : "ar";
     applyLanguage(newLang);
 }
 
-function applyLanguage(lang) {
-    const elements = document.querySelectorAll(".lang-key");
+// function applyLanguage(lang) {
+//     const elements = document.querySelectorAll(".lang-key");
     
-    elements.forEach((el) => {
-        if (!el.getAttribute("data-ar")) {
-            el.setAttribute("data-ar", el.innerHTML.trim());
-        }
+//     elements.forEach((el) => {
+//         if (!el.getAttribute("data-ar")) {
+//             el.setAttribute("data-ar", el.innerHTML.trim());
+//         }
 
-        if (lang === "en") {
-            const enText = el.getAttribute("data-en");
-            if (enText) el.innerHTML = enText;
-        } else {
-            const arText = el.getAttribute("data-ar");
-            if (arText) el.innerHTML = arText;
-        }
-    });
+//         if (lang === "en") {
+//             const enText = el.getAttribute("data-en");
+//             if (enText) el.innerHTML = enText;
+//         } else {
+//             const arText = el.getAttribute("data-ar");
+//             if (arText) el.innerHTML = arText;
+//         }
+//     });
 
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
-    document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
+//     document.documentElement.lang = lang;
+//     document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+//     document.body.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
 
-    // const updateFlagAndText = (flagId, textId) => {
-    //     const flagImg = document.getElementById(flagId);
-    //     const textSpan = document.getElementById(textId);
+//     // const updateFlagAndText = (flagId, textId) => {
+//     //     const flagImg = document.getElementById(flagId);
+//     //     const textSpan = document.getElementById(textId);
         
-    //     if (flagImg && textSpan) {
-    //         if (lang === 'en') {
-    //             flagImg.src = "https://flagcdn.com/w20/sa.png"; 
-    //             textSpan.textContent = "العربية";
-    //         } else {
-    //             flagImg.src = "https://flagcdn.com/w20/us.png"; 
-    //             textSpan.textContent = "English";
-    //         }
-    //     }
-    // };
+//     //     if (flagImg && textSpan) {
+//     //         if (lang === 'en') {
+//     //             flagImg.src = "https://flagcdn.com/w20/sa.png"; 
+//     //             textSpan.textContent = "العربية";
+//     //         } else {
+//     //             flagImg.src = "https://flagcdn.com/w20/us.png"; 
+//     //             textSpan.textContent = "English";
+//     //         }
+//     //     }
+//     // };
 
-    // updateFlagAndText("desktopLangFlag", "desktopLangText");
-    // updateFlagAndText("mobileLangFlag", "mobileLangText");
+//     // updateFlagAndText("desktopLangFlag", "desktopLangText");
+//     // updateFlagAndText("mobileLangFlag", "mobileLangText");
 
-    localStorage.setItem("selectedLang", lang);
+//     localStorage.setItem("selectedLang", lang);
     
-    const sidebar = document.getElementById('mobileMenuSidebar');
-    if (sidebar && sidebar.classList.contains('active-level-2')) {
-        const activeModule = sidebar.getAttribute('data-current-module');
-        if (activeModule) openSubMenu(activeModule);
-    }
+//     const sidebar = document.getElementById('mobileMenuSidebar');
+//     if (sidebar && sidebar.classList.contains('active-level-2')) {
+//         const activeModule = sidebar.getAttribute('data-current-module');
+//         if (activeModule) openSubMenu(activeModule);
+//     }
     
-    if (window.AOS) AOS.refresh();
-}
+//     if (window.AOS) AOS.refresh();
+// }
 
 // التحكم بقائمة الموبايل والانتقال السلس
 function toggleMobileMenu() {
