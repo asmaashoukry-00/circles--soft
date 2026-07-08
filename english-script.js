@@ -23,8 +23,8 @@ window.applyLanguage = function(lang) {
 
     // 4. Set page direction and language attributes
     document.documentElement.lang = lang;
-    document.documentElement.dir = (lang === "en") ? "ltr" : "rtl";
-    document.body.setAttribute("dir", (lang === "en") ? "ltr" : "rtl");
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    document.body.setAttribute("dir", (lang === "ar") ? "rtl" : "ltr");
     localStorage.setItem("selectedLang", lang);
 
     // 5. Dispatch custom language event
