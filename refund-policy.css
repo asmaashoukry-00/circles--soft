@@ -1,0 +1,71 @@
+.main-policy-container {
+    padding-top: 160px; 
+    padding-bottom: 80px;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.policy-card {
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 60px 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+.policy-block {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.policy-block:last-child {
+    margin-bottom: 0;
+}
+
+.policy-block h3 {
+    font-family: 'Montserrat', 'Tajawal', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1e23;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.policy-block p {
+    font-family: 'Montserrat', 'Tajawal', sans-serif;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #4a5568;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    text-align-last: center;
+}
+
+html[dir="rtl"] .policy-block p {
+    line-height: 2.1;
+}
+
+@media (max-width: 768px) {
+    .main-policy-container {
+        padding-top: 120px;
+        padding-bottom: 50px;
+    }
+    .policy-card {
+        padding: 40px 20px;
+    }
+    .policy-block h3 {
+        font-size: 22px;
+    }
+    .policy-block p {
+        font-size: 15px;
+    }
+}

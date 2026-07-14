@@ -1,9 +1,24 @@
 window.applyLanguage = function(lang) {
-    // 1. Translate normal text elements
+    // 1. Translate normal text elements and placeholders
     document.querySelectorAll(".lang-key").forEach((el) => {
-        if (!el.getAttribute("data-ar")) el.setAttribute("data-ar", el.innerHTML.trim());
-        const text = (lang === "en") ? el.getAttribute("data-en") : el.getAttribute("data-ar");
-        if (text) el.innerHTML = text;
+        const isInputOrTextarea = el.tagName === "INPUT" || el.tagName === "TEXTAREA";
+
+        if (isInputOrTextarea) {
+            // التعامل مع الـ Placeholders للـ inputs والـ textareas
+            const arPlaceholder = el.getAttribute("data-ar-placeholder");
+            const enPlaceholder = el.getAttribute("data-en-placeholder");
+            
+            if (arPlaceholder && enPlaceholder) {
+                el.placeholder = (lang === "en") ? enPlaceholder : arPlaceholder;
+            }
+        } else {
+            // التعامل مع النصوص العادية (p, h2, span, etc.)
+            if (!el.getAttribute("data-ar")) {
+                el.setAttribute("data-ar", el.innerHTML.trim());
+            }
+            const text = (lang === "en") ? el.getAttribute("data-en") : el.getAttribute("data-ar");
+            if (text) el.innerHTML = text;
+        }
     });
 
     // 2. Translate images
@@ -31,6 +46,8 @@ window.applyLanguage = function(lang) {
     const event = new CustomEvent('languageChanged', { detail: { lang: lang } });
     window.dispatchEvent(event);
 };
+
+// باقي الكود والـ Event Listeners والـ Observer بتوعك يفضلوا زي ما هم بدون أي تغيير...
 
 window.addEventListener('languageChanged', (e) => {
     const lang = e.detail.lang;

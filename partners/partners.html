@@ -537,79 +537,94 @@
         </ul>
       </div>
 
-      <div class="apply-form-side">
-        <div class="apply-form-card" id="apply-form-container">
-          <div class="form-card-header">
+   <div class="apply-form-side">
+    <div class="apply-form-card" id="apply-form-container">
+        <div class="form-card-header">
             <h3 class="lang-key" data-ar="طلب انضمام شريك جديد" data-en="New Partner Application">طلب انضمام شريك جديد</h3>
-            <p class="lang-key" data-ar="جميع الحقول المحددة بـ * مطلوبة" data-en="All fields marked with * are required">جميع الحقول المحددة بـ <span class="req">*</span> مطلوبة</p>
-          </div>
-          
-          <form id="partner-form" onsubmit="submitForm(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="req">*</span> <span class="lang-key" data-ar="اسم الشركة" data-en="Company Name">اسم الشركة</span></label>
-                <input type="text" placeholder="شركة التقنية المتقدمة" required>
-              </div>
-              <div class="form-group">
-                <label><span class="req">*</span> <span class="lang-key" data-ar="اسم مقدم الطلب" data-en="Applicant Name">اسم مقدم الطلب</span></label>
-                <input type="text" placeholder="محمد الأحمد" required>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="req">*</span> <span class="lang-key" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</span></label>
-                <input type="email" placeholder="info@company.com" required>
-              </div>
-              <div class="form-group">
-                <label><span class="req">*</span> <span class="lang-key" data-ar="رقم الجوال" data-en="Mobile Number">رقم الجوال</span></label>
-                <input type="tel" placeholder="+966 5X XXX XXXX" required>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="req">*</span> <span class="lang-key" data-ar="البلد والمدينة" data-en="Country & City">البلد والمدينة</span></label>
-                <input type="text" placeholder="السعودية، الرياض" required>
-              </div>
-              <div class="form-group">
-                <label class="lang-key" data-ar="المستوى المستهدف" data-en="Target Tier">المستوى المستهدف</label>
-                <select>
-                  <option value="" class="lang-key" data-ar="اختر المستوى" data-en="Choose Tier">اختر المستوى</option>
-                  <option>Silver</option>
-                  <option>Gold</option>
-                  <option>Platinum</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group full-width">
-              <label><span class="req">*</span> <span class="lang-key" data-ar="القطاعات التي تخدمها" data-en="Sectors You Serve">القطاعات التي تخدمها</span></label>
-              <input type="text" placeholder="مثل: الصحة، التجزئة، التعليم..." required>
-            </div>
-            
-            <div class="form-group full-width">
-              <label class="lang-key" data-ar="نبذة عن شركتك وخبرتك التقنية" data-en="About Your Company & Technical Expertise">نبذة عن شركتك وخبرتك التقنية</label>
-              <textarea placeholder="أخبرنا عن نشاط شركتك، عدد العملاء الحاليين، وأي منتجات برمجية مشابهة تبيعها حالياً..."></textarea>
-            </div>
-            
-            <button type="submit" class="form-submit-btn lang-key" data-ar="إرسال طلب الانضمام ←" data-en="Submit Application ←">إرسال طلب الانضمام ←</button>
-            <div class="form-card-note lang-key" data-ar="بالإرسال توافق على شروط برنامج الشركاء. سنرد عليك خلال 48 ساعة." 
-               data-en="By submitting, you agree to the partner program terms. We will reply within 48 hours.">
-                بالإرسال توافق على شروط برنامج الشركاء. سنرد عليك خلال 48 ساعة.
-            </div>
-          </form>
-
-          <div class="success-box-inside" id="success-msg" style="display: none;">
-            <div class="success-icon">✅</div>
-            <h3 class="lang-key" data-ar="تم استلام طلبك بنجاح!" data-en="Your application has been received successfully!">تم استلام طلبك بنجاح!</h3>
-            <p class="lang-key" data-ar="شكراً لاهتمامك بالانضمام إلى شبكة شركاء سيركلز سوفت. سيتواصل معك فريقنا خلال 48 ساعة." 
-               data-en="Thank you for your interest in joining Circles Soft partner network. Our team will contact you within 48 hours.">
-                شكراً لاهتمامك بالانضمام إلى شبكة شركاء سيركلز سوفت.<br>سيتواصل معك فريقنا على البريد الإلكتروني المُدخل خلال 48 ساعة.
+            <p class="lang-key" data-ar="جميع الحقول المحددة بـ * مطلوبة" data-en="All fields marked with * are required">
+                جميع الحقول المحددة بـ <span class="req">*</span> مطلوبة
             </p>
-          </div>
         </div>
-      </div>
+        
+        <form id="partner-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label><span class="req">*</span> <span class="lang-key" data-ar="اسم الشركة" data-en="Company Name">اسم الشركة</span></label>
+                    <input type="text" class="lang-key" 
+                           data-ar-placeholder="شركة التقنية المتقدمة" 
+                           data-en-placeholder="Advanced Technology Company" 
+                           placeholder="شركة التقنية المتقدمة" required>
+                </div>
+                <div class="form-group">
+                    <label><span class="req">*</span> <span class="lang-key" data-ar="اسم مقدم الطلب" data-en="Applicant Name">اسم مقدم الطلب</span></label>
+                    <input type="text" class="lang-key" 
+                           data-ar-placeholder="محمد الأحمد" 
+                           data-en-placeholder="Mohammed Al-Ahmad" 
+                           placeholder="محمد الأحمد" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label><span class="req">*</span> <span class="lang-key" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</span></label>
+                    <input type="email" class="lang-key" 
+                           data-ar-placeholder="info@company.com" 
+                           data-en-placeholder="info@company.com" 
+                           placeholder="info@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label><span class="req">*</span> <span class="lang-key" data-ar="رقم الجوال" data-en="Mobile Number">رقم الجوال</span></label>
+                    <input type="tel" class="lang-key" 
+                           data-ar-placeholder="+966 5X XXX XXXX" 
+                           data-en-placeholder="+966 5X XXX XXXX" 
+                           placeholder="+966 5X XXX XXXX" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label><span class="req">*</span> <span class="lang-key" data-ar="البلد والمدينة" data-en="Country & City">البلد والمدينة</span></label>
+                    <input type="text" class="lang-key" 
+                           data-ar-placeholder="السعودية، الرياض" 
+                           data-en-placeholder="Riyadh, Saudi Arabia" 
+                           placeholder="السعودية، الرياض" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-key" data-ar="المستوى المستهدف" data-en="Target Tier">المستوى المستهدف</label>
+                  <select id="tier-select">
+    <option value="" class="lang-key" data-ar="اختر المستوى" data-en="Choose Tier">اختر المستوى</option>
+    <option value="Silver" class="lang-key" data-ar="فضي" data-en="Silver">فضي</option>
+    <option value="Gold" class="lang-key" data-ar="ذهبي" data-en="Gold">ذهبي</option>
+    <option value="Platinum" class="lang-key" data-ar="بلاتيني" data-en="Platinum">بلاتيني</option>
+</select>
+                </div>
+            </div>
+            
+            <div class="form-group full-width">
+                <label><span class="req">*</span> <span class="lang-key" data-ar="القطاعات التي تخدمها" data-en="Sectors You Serve">القطاعات التي تخدمها</span></label>
+                <input type="text" class="lang-key" 
+                       data-ar-placeholder="مثل: الصحة، التجزئة، التعليم..." 
+                       data-en-placeholder="e.g. Healthcare, Retail, Education..." 
+                       placeholder="مثل: الصحة، التجزئة، التعليم..." required>
+            </div>
+            
+            <div class="form-group full-width">
+                <label class="lang-key" data-ar="نبذة عن شركتك وخبرتك التقنية" data-en="About Your Company & Technical Expertise">
+                    نبذة عن شركتك وخبرتك التقنية
+                </label>
+                <textarea class="lang-key" 
+                          data-ar-placeholder="أخبرنا عن نشاط شركتك، عدد العملاء الحاليين، وأي منتجات برمجية مشابهة تبيعها حالياً..."
+                          data-en-placeholder="Tell us about your company activities, current clients, and any similar software products you sell..."></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit-btn lang-key" 
+                    data-ar="إرسال طلب الانضمام ←" 
+                    data-en="Submit Application ←">
+                إرسال طلب الانضمام ←
+            </button>
+        </form>
+    </div>
+</div>
 
     </div>
 </section>

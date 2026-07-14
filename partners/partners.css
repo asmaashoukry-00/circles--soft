@@ -856,6 +856,15 @@ body.var-partners-page {
     margin: 0 auto;
 }
 
+html[lang="en"] .apply-wrapper {
+    direction: ltr;
+      /* grid-template-columns:  1fr  .7fr!important;  */
+
+}
+html[lang="en"] .apply-info-side , html[lang="en"] .apply-form-card {
+    text-align: left;
+}
+
 .apply-info-side {
     text-align: right;
     padding-top: 15px;
