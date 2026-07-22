@@ -4,7 +4,7 @@ window.applyLanguage = function(lang) {
         const isInputOrTextarea = el.tagName === "INPUT" || el.tagName === "TEXTAREA";
 
         if (isInputOrTextarea) {
-            // التعامل مع الـ Placeholders للـ inputs والـ textareas
+          
             const arPlaceholder = el.getAttribute("data-ar-placeholder");
             const enPlaceholder = el.getAttribute("data-en-placeholder");
             
@@ -12,7 +12,7 @@ window.applyLanguage = function(lang) {
                 el.placeholder = (lang === "en") ? enPlaceholder : arPlaceholder;
             }
         } else {
-            // التعامل مع النصوص العادية (p, h2, span, etc.)
+           
             if (!el.getAttribute("data-ar")) {
                 el.setAttribute("data-ar", el.innerHTML.trim());
             }
