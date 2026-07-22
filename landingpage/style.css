@@ -532,9 +532,6 @@ html[dir="ltr"] .icon-flip {
     transform: scaleX(-1);
 }
 
-.main-sentence {
-    line-height: 1.6; 
-}
 
 .title-link, 
 .features-sub-list li a {
